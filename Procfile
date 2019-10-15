@@ -1,1 +1,1 @@
-web: gunicorn website.wsgi --log-file -
+web: sh setup.sh && streamlit run website/main.py
