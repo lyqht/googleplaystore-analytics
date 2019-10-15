@@ -4,3 +4,5 @@ enableCORS=false
 headless = true\n\
 port = $PORT\n\
 " > ./.streamlit.config.toml
+
+echo $PORT
