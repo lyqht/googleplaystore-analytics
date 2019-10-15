@@ -1,5 +1,5 @@
 echo "\
-[server]\n]
+[server]\n\
 enableCORS=false
 headless = true\n\
 port = $PORT\n\
