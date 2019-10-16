@@ -19,10 +19,10 @@ df = load_data()
 data_load_state.text("Loading data... done!")
 
 st.write("Here's a sample of the reviews' data.")
-df.head(10)
+df
 
 
 # Sidebar stuff
-columns = df.columns
-for option in df.columns:
-    st.sidebar.selectbox(option, [False, True])
+# columns = df.columns
+# for option in df.columns:
+#     st.sidebar.selectbox(option, [False, True])
