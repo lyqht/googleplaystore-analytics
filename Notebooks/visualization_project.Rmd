@@ -1,0 +1,112 @@
+---
+title: "CDS Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+df_sentiment<-read.csv('googleplaystore_user_reviews.csv')
+head(df_sentiment)
+```
+
+```{r}
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Sentiment,fill = Sentiment))+
+  geom_bar()+
+  labs(title = 'Frequency Plot of Sentiment',x = 'Sentiment',y = 'Frequency' )
+```
+```{r}
+```
+We need to remove the nan values from the data.
+The Number of positive in our data set is much larger compared to the number of negative and the number of neutral. This dispropotionate will result in a higher chance of predicting them to be positive. 
+Accuracy might not be a good measure to evaluate the model. 
+We should consider to use tree-based algorithms. Decision trees often perform well on imbalanced datasets because their hierarchical structure allows them to learn signals from both classes.
+
+
+```{r}
+str(df_sentiment)
+summary(df_sentiment)
+```
+All rows from the nan should be removed. 
+Classifying a sentence as subjective or objective, known as subjectivity classification.
+Classifying a sentence as expressing a positive, negative or neutral opinion, known as polarity classification.
+
+Thus, we can consider to add a column to the existing dataframe in which  Sentimnet_Subjectivity>0.5 will be classfied as subjective, else objective 
+```{r}
+df_sentiment = transform(df_sentiment,Opinion = ifelse(Sentiment_Subjectivity>0.5,'Subjective','Objective'))
+head(df_sentiment)
+```
+```{r}
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Opinion,fill = Opinion))+
+  geom_bar()+
+  labs(title = 'Frequency Plot of Opinion',x = 'Opinion',y = 'Frequency' )
+```
+The visualization for the relationship between sentiment_polarity and sentiment_subjectivity was not useful 
+
+```{r}
+ggplot(data = df_sentiment,aes(x = Sentiment_Polarity,y = Sentiment_Subjectivity))+ geom_point()
+```
+The raltionship between sentiment polarity and sentiment can be better represent by using a boxplot as shown below
+```{r}
+ggplot(data = df_sentiment,aes(x = Sentiment,y = Sentiment_Polarity))+ geom_point()
+```
+```{r}
+#Jitter plot will shift the overlap points a bit which enables us to see the actual number of points 
+ggplot(data = df_sentiment,aes(x = Sentiment,y = Sentiment_Polarity))+ geom_jitter()
+```
+
+
+```{r}
+ggplot(data = df_sentiment,aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment))+geom_boxplot()
+```
+
+```{r}
+ggplot(data = df_sentiment,aes(x = Sentiment, y = Sentiment_Subjectivity, fill = Sentiment))+geom_boxplot()
+
+```
+
+```{r}
+
+ggplot(data = df_sentiment,aes(x = Opinion, y = Sentiment_Subjectivity, fill = Opinion))+geom_boxplot()
+
+```
+
+```{r}
+ggplot(data = df_sentiment,aes(x = Opinion, y = Sentiment_Polarity, fill = Opinion))+geom_boxplot()
+```
+```{r}
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Sentiment_Polarity))+
+  geom_histogram()+
+  labs(title ='Histogram of Sentiment Polarity',x = 'Sentiment Polarity',y = 'Frequency' )
+
+```
+```{r}
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Sentiment_Subjectivity))+
+  geom_histogram()+
+  labs(title ='Histogram of Sentiment Subjectivity ',x = 'Sentiment Subjectivity',y = 'Frequency' )
+
+
+```
+
+Additional plots that can be considered: 
+Boxplots with both the sentiment subjectivity and sentiment polarity 
+
+The following plots required us to tokenize the review and get the word count before we can proceed. 
+
+Plots required:
+Word count,
+Most Frequent word in the positive sentiment,
+Most Freqeunt word in the negative sentiment,
+Most Frequesnt word in the neutral sentiment,
+Method : Can use word cloud, bar chart 
+
+
+
+
