@@ -3,24 +3,22 @@ import numpy as np
 import pandas as pd
 import time
 
-
-st.title("Google App Analytics")
-st.write("## Sentiment Analysis on Reviews")
+st.title("Sentiment Analysis on Google Playstore Reviews")
 
 
 @st.cache
 def load_data():
-    data = pd.read_csv("data/googleplaystore_user_reviews.csv")
-    return data
+    reviews_data = pd.read_csv("data/googleplaystore_user_reviews.csv")
+    app_data = pd.read_csv("data/googleplaystore.csv")
+    return reviews_data, app_data
 
 
 data_load_state = st.text("Loading data...")
-df = load_data()
+reviews_df, app_df = load_data()
 data_load_state.text("Loading data... done!")
 
-st.write("Here's a sample of the reviews' data.")
-df
-
+"General App Data"
+app_df
 
 # Sidebar stuff
 # columns = df.columns

@@ -24,3 +24,11 @@ streamlit run website/main.py
 ```
 
 At the moment, it only shows a preview of the reviews' data. We are still planning what to actually show on this app for interaction.
+
+## Deployment
+
+The Streamlit App is deployed to Heroku.
+- The necessary packages are listed in `requirements.txt`
+- `setup.sh` is necessary for the dyno to enable the web app server to run on
+  -  `enableCORS=false`
+  -  `headless=true`
