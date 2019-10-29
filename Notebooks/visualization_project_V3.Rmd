@@ -1,0 +1,246 @@
+---
+title: "CDS Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+The googleplaystore_user_reviews.csv used here is from Kaggle which served as a comparison to our model. 
+```{r}
+df_sentiment<-read.csv('googleplaystore_user_reviews.csv',na.strings=c("")) 
+str(df_sentiment)
+head(df_sentiment)
+df_sentiment<-na.omit(df_sentiment)
+```
+```{r}
+str(df_sentiment)
+nrow(df_sentiment)
+summary(df_sentiment)
+
+```
+
+```{r}
+df_sentiment_model<-read.csv('polarity.csv')
+head(df_sentiment_model)
+str(df_sentiment_model)
+summary(df_sentiment_model)
+
+```
+Frequency plot of sentiment for our model
+```{r}
+
+ggplot(data = df_sentiment_model,aes(x = Sentiment,fill = Sentiment))+
+  geom_bar()+
+  labs(title = 'Frequency Plot of Sentiment',x = 'Sentiment',y = 'Frequency' )
+
+ggsave("../sentiment_freq_model.png")
+
+```
+
+Frequency plot of sentiment for the reference model
+```{r}
+str(df_sentiment)
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Sentiment,fill = Sentiment))+
+  geom_bar()+
+  labs(title = 'Frequency Plot of Sentiment',x = 'Sentiment',y = 'Frequency' )
+
+ggsave("../sentiment_freq.png")
+```
+
+The NaN values were removed. 
+Our model predicted more reviews to be negative as compared to the reference model. 
+This shows that our model might be more sensitive to the negative sentiment compared
+to the negative model. 
+
+```{r}
+str(df_sentiment)
+summary(df_sentiment)
+```
+
+```{r}
+
+library(ggplot2)
+df_Translated_review_one_word<-data.frame(Review = c('Good','Nice','Great','Love','Awesome','Very good'), Freq = c(247,173,131,116,71,69))
+ 
+df_Translated_review_one_word
+
+library(ggplot2)
+ggplot(data = df_Translated_review_one_word,aes(x = Review,y = Freq,fill = Review))+
+  geom_bar(stat = 'identity')+
+  labs(title = 'Review Distribution Before Tokenize',subtitle = 'Only reviews that are made up of one word are shown and other reviews (36625) that have 
+multiple words are not shown here. ', x = 'Review',y = 'Frequency' )+
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  theme(legend.position = 'none')
+
+ggsave("../review_dist.png")
+
+
+
+```
+
+These words are typically linked with positive sentiment. Hence, if our preprocessing are unable to separate the multi-words reviews, our model might be biassed towards positive sentiment. However, since the proportion of these words to the multi-words reviews is relatively low, we concluded that the model will not be biassed. 
+
+Sentiment Polarity Boxplot For the Reference
+
+```{r}
+ggplot(data = df_sentiment,aes(y = Sentiment_Polarity))+geom_boxplot(fill = "#00AFBB", color = "black")+
+  labs(title = 'Boxplot of Sentiment Polarity Reference')
+
+ggsave("../polarity_boxplt.png")
+
+```
+
+Sentiment Subjectivity Boxplot for the reference
+
+```{r}
+ggplot(data = df_sentiment,aes(y = Sentiment_Subjectivity))+geom_boxplot(fill = "#CC79A7", color = "black")+
+  labs(title = 'Boxplot of Sentiment Subjectivity Reference')
+
+ggsave("../subjectivity_freq.png")
+```
+
+Polarity Boxplot for the model 
+
+```{r}
+df_compound<-read.csv('compound.csv')
+min(df_compound$Compound)
+max(df_compound$Compound)
+ggplot(data = df_compound,aes(y = Compound))+geom_boxplot(fill = "#00AFBB", color = "black")+
+  labs(title = 'Boxplot of Sentiment Polarity Model')
+
+ggsave("../compound_boxplot.png")
+
+
+```
+
+
+Combine Boxplot for Polarity
+
+
+```{r}
+combinesubjectivity<-data.frame(reference = df_sentiment$Sentiment_Polarity)
+head(combinesubjectivity)
+
+combinesubjectivity$model<-df_compound$Compound
+head(combinesubjectivity)
+
+library(reshape2)
+
+df1_long <- melt(combinesubjectivity)
+head(df1_long)
+
+ggplot(data = df1_long,aes(x = variable, y = value))+geom_boxplot(aes(fill = variable))+
+  labs(title = 'Boxplot of Sentiment Polarity',y = 'Sentiment Polarity', x = '')+
+  theme(legend.title = element_blank())
+
+ggsave("../combine_polarity_boxplot.png")
+
+
+
+
+
+
+```
+
+Boxplot for review length and the sentiment
+```{r}
+head(df_compound)
+```
+
+
+```{r}
+library(ggplot2)
+
+df_compound_outlier_removed<-subset(df_compound, df_compound$Review.Length<56)
+
+ggplot(data = df_compound_outlier_removed,aes(x = Sentiment, y = Review.Length))+geom_boxplot(aes(fill = Sentiment))+
+  labs(title = 'Boxplot of Review Length',y = 'Review Length', x = 'Sentiment')+
+  theme(legend.title = element_blank())
+
+ggsave("../review_length_boxplot.png")
+
+
+```
+
+
+The raltionship between sentiment polarity and sentiment can be better represent by using a boxplot as shown below
+
+
+```{r}
+ggplot(data = df_sentiment,aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment))+geom_boxplot()
+```
+
+```{r}
+ggplot(data = df_sentiment,aes(x = Sentiment, y = Sentiment_Subjectivity, fill = Sentiment))+geom_boxplot()
+
+```
+
+
+
+```{r}
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Sentiment_Polarity,fill = cut(Sentiment_Polarity, 100)))+
+  geom_histogram(show.legend = FALSE)+
+  labs(title ='Sentiment Polarity Distribution for the Reference',x = 'Sentiment Polarity',y = 'Frequency' )
+ggsave("../Sentiment_Polarity_Distribution_Reference.png")
+```
+Since the mode is smaller than the median and the mean is greater than the median, the distribution is positively skewed. Most of the reviews are greater than zero and are mostly positive. 
+
+
+```{r}
+library(ggplot2)
+ggplot(data = df_sentiment,aes(x = Sentiment_Subjectivity,fill = cut(Sentiment_Subjectivity, 100)))+
+  geom_histogram(show.legend = FALSE)+
+  labs(title ='Histogram of Sentiment Subjectivity for the Reference',x = 'Sentiment Subjectivity',y = 'Frequency' )
+
+ggsave("../Sentiment_Subjectivity_Distribution_Reference.png")
+
+
+```
+
+Histogram of Sentiment Polarity for the reference
+
+```{r}
+library(ggplot2)
+ggplot(data = df_compound,aes(x = Compound,fill = cut(Compound, 100)))+
+  geom_histogram(show.legend = FALSE)+
+  labs(title ='Sentiment Polarity Distribution for the Model',x = 'Sentiment Polarity',y = 'Frequency' )
+
+ggsave("../Sentiment_Polarity_Distribution_Model.png")
+```
+
+```{r}
+df<-read.csv('googleplaystore_cleaned.csv')
+str(df)
+head(df)
+
+```
+
+```{r}
+
+df_review_cat<-data.frame(Category = names(tapply(df$Reviews, df$Category,sum)), Reviews = unname(tapply(df$Reviews, df$Category,sum)))
+df_review_cat
+```
+```{r}
+df_review_cat$Category[which.min(df_review_cat$Reviews)] 
+df_review_cat$Category[which.max(df_review_cat$Reviews)] 
+
+```
+Games is the category with the most number of reviews and events is the category with the least number of review. 
+```{r}
+library(ggplot2)
+ggplot(data = df_review_cat,aes(x = Category,y = Reviews,fill = Category))+
+  geom_bar(stat = 'identity')+
+  labs(title = 'Distribution of Category of Reviews',x = 'Category',y = 'Reviews' )+
+  theme(axis.text.x=element_text(angle=90,hjust=1)) +
+  theme(legend.position = 'none')
+
+ggsave("../review_cat.png", width = 16, height = 8, dpi = 120)
+
+```
+
