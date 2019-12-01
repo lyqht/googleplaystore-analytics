@@ -1,26 +1,28 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
-import time
 
-st.title("Sentiment Analysis on Google Playstore Reviews")
+import dataset
+import intro
+import model
+import user_prediction
+import references
+
+PAGES = {
+    "Intro": intro,
+    "Dataset Exploration": dataset,
+    "Modelling": model,
+    "Prediction Based on User Input": user_prediction,
+    "References": references
+}
 
 
-@st.cache
-def load_data():
-    reviews_data = pd.read_csv("data/googleplaystore_user_reviews.csv")
-    app_data = pd.read_csv("data/googleplaystore.csv")
-    return reviews_data, app_data
+def main():
+    st.sidebar.title("Navigation")
+    selection = st.sidebar.radio("Go to", list(PAGES.keys()))
+    page = PAGES[selection]
+
+    with st.spinner(f"Loading Page ..."):
+        page.write()  # each page has a write function
 
 
-data_load_state = st.text("Loading data...")
-reviews_df, app_df = load_data()
-data_load_state.text("Loading data... done!")
-
-"General App Data"
-app_df
-
-# Sidebar stuff
-# columns = df.columns
-# for option in df.columns:
-#     st.sidebar.selectbox(option, [False, True])
+if __name__ == "__main__":
+    main()
