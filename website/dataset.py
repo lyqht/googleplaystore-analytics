@@ -9,25 +9,28 @@ import pandas as pd
 def load_data():
     reviews_data = pd.read_csv("data/reviews_naive_polarity.csv")
     app_data = pd.read_csv("data/googleplaystore_cleaned.csv")
-    return reviews_data, app_data
+    ner_data = pd.read_csv("data/ner_dataset.csv", encoding="latin1")
+    return reviews_data, app_data, ner_data
 
 
-view_modes = ["General App Data", "Reviews Data"]
+view_modes = ["General App Data", "Reviews Data", "NER"]
 
 
-def preview(selection, reviews_df, app_df):
+def preview(selection, reviews_df, app_df, ner_df):
     if selection == view_modes[0]:
         preview_general(app_df)
-    else:
+    elif selection == view_modes[1]:
         preview_reviews(reviews_df)
+    else:
+        preview_ner(ner_df)
 
 
 def preview_general(df):
-    st.write("General App Data")
+    st.write("## General App Data")
     st.write(df)
 
     st.write("""
-             ## Observation of Trends
+             ### Observation of Trends
              """)
     fig = plt.figure(figsize=(10, 4))
     plt.title('Frequency Distribution of Categories')
@@ -39,12 +42,29 @@ def preview_general(df):
     st.pyplot()
 
     fig = plt.figure(figsize=(10, 4))
-    sns.countplot(df['Category'])
-    plt.xlabel('Genre')
-    plt.ylabel('Frequency')
-    plt.title('Frequency Distribution of Genres')
-    plt.xticks(rotation=90)
-    plt.tight_layout()
+    # sns.countplot(df['Genres'])
+    value_counts = df["Genres"].value_counts()
+    genre_labels = list(value_counts.index)
+
+    # manually overriding so that they don't appear on the circle
+    for i in range(10, len(genre_labels)):
+        genre_labels[i] = " "
+
+    def my_autopct(pct):
+        return ('%.2f%%' % pct) if pct > 3.5 else ''
+
+    colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(value_counts, colors=colors, labels=genre_labels,
+            autopct=my_autopct, startangle=90)
+
+    # wanted to add in an explode param, but streamlit did not allow this
+    # https://medium.com/@kvnamipara/a-better-visualisation-of-pie-charts-by-matplotlib-935b7667d77f
+
+    centre_circle = plt.Circle((0, 0), 0.70, fc='white')
+    fig = plt.gcf()
+    fig.gca().add_artist(centre_circle)
+    ax1.axis('equal')
     st.pyplot()
 
     fig = plt.figure(figsize=(10, 4))
@@ -80,17 +100,21 @@ def preview_general(df):
 
 
 def preview_reviews(df):
-    st.write("Reviews Data")
+    st.write("## Reviews Data")
+    st.write(df)
+
+
+def preview_ner(df):
+    st.write("## Ner Data")
     st.write(df)
 
 
 def write():
-    reviews_df, app_df = load_data()
+    reviews_df, app_df, ner_df = load_data()
     st.write(
         """
         ### Skimming Through The Dataset
-        We have 2 datasets, one containing general app data, and the other containing reviews.
-        The data shown here has been preprocessed already.
+        Toggle below to view the different datasets! (already been preprocessed by us) 
         """)
     selection = st.radio("Explore: ", view_modes)
-    preview(selection, reviews_df, app_df)
+    preview(selection, reviews_df, app_df, ner_df)
