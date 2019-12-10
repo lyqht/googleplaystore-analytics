@@ -3,15 +3,15 @@ import streamlit as st
 import dataset
 import intro
 import model
-import user_prediction
+import topic_modelling
 import references
 
 PAGES = {
     "Intro": intro,
     "Dataset Exploration": dataset,
-    "Modelling": model,
-    "Prediction Based on User Input": user_prediction,
-    "References": references
+    "Topic Modelling": topic_modelling,
+    "Individual Star Rating Prediction Model": model,
+    "References": references,
 }
 
 

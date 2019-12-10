@@ -3,7 +3,6 @@ import streamlit as st
 
 def write():
     st.title("Prediction of Individual Star Rating")
-
     st.write("""
              ## Feature Engineering: Sentiment Polarity
 
