@@ -26,7 +26,7 @@ def write():
             The following are the models that we used:
 
             1. Decision Tree
-                - often perform well on imbalanced datasets as their hierarchical structure allows them to learn signals from both classes.
+                - often perform well on imbalanced datasets due to their hierarchical structure
                 - our dataset is biased to positive sentiment
             """)
 
