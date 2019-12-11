@@ -30,7 +30,7 @@ def write():
                 - our dataset is biased to positive sentiment
             """)
 
-    st.image("website/assets/DecisionTree.PNG")
+    st.image("website/assets/DecisionTree.PNG",use_column_width=True)
 
     st.write("""
 
