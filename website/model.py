@@ -20,7 +20,7 @@ def write():
                 - However, we chose ***DBOW*** as it is known to be able to perform better for a smaller corpus.
               In DBOW, the paragraph vectors are obtained by training a neural network on the task of predicting a probability distribution of words in a paragraph given a randomly-sampled word from the paragraph.
 
-            After which, we have also performed cross-validation of different models to classify the sentiment polarity of each reviews.
+            After which, we have also performed cross-validation of different models to classify the sentiment of each review.
 
             ### Cross Validation
             The following are the models that we used:
@@ -28,12 +28,17 @@ def write():
             1. Decision Tree
                 - often perform well on imbalanced datasets as their hierarchical structure allows them to learn signals from both classes.
                 - our dataset is biased to positive sentiment
+            """)
+
+        st.image("website/assets/DecisionTree.PNG")
+
+        st.write("""
 
             2. Support vector machine
                 - This is because we can penalize mistakes on the minority class by an amount proportional to how under-represented it is by using the argument class weight = ‘balanced’.
 
             To counter the imbalanced dataset, we also applied SMOTE (Synthetic Minority Over-sampling Technique).
-            It is an over-sampling method which creates synthetic samples of the minority class.
+            It is an over-sampling method which creates synthetic samples of the minority class.SMOTE uses a nearest neighbors algorithm to generate new and synthetic data we can use for training our model.
             We use `imblearn` python package to achieve this.
 
             **10-fold Cross Validation Table**
