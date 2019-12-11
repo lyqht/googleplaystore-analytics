@@ -36,6 +36,12 @@ def write():
 
             2. Support vector machine
                 - This is because we can penalize mistakes on the minority class by an amount proportional to how under-represented it is by using the argument class weight = ‘balanced’.
+             """)
+
+    st.image("website/assets/SVM.PNG",use_column_width=True)
+
+
+    st.write("""
 
             To counter the imbalanced dataset, we also applied SMOTE (Synthetic Minority Over-sampling Technique).
             It is an over-sampling method which creates synthetic samples of the minority class.SMOTE uses a nearest neighbors algorithm to generate new and synthetic data we can use for training our model.
