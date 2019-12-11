@@ -48,24 +48,27 @@ def write():
             To counter the imbalanced dataset, we also applied SMOTE (Synthetic Minority Over-sampling Technique).
             It is an over-sampling method which creates synthetic samples of the minority class.SMOTE uses a nearest neighbors algorithm to generate new and synthetic data we can use for training our model.
             We use `imblearn` python package to achieve this.
+            """)
+    st.image("website/assets/sentiment_freq.PNG")
+    st.write(""" Figure 3 : Sentiment Distribution
 
             **10-fold Cross Validation Table**
              """)
     st.image("website/assets/Cross_Validation.PNG")
-    st.write("Figure 3 : Cross_Validation")
+    st.write("Figure 4 : Cross Validation")
     st.write("""
              Using TF-IDF generally results in higher F1 score.
              """)
 
     st.write("""
             The measure of performance is micro-average F1-score as the dataset is unbalanced.
-            The following is the our best model on classification.
+            The following is our best model on classification.
 
-            **TFIDF** + **Random Forest** + **OverSampling**
+            **TF-IDF** + **Random Forest** + **OverSampling**
 
              """)
     st.image("website/assets/Best_Model.PNG")
-    st.write("Figure 4 : Best_Model")
+    st.write("Figure 5 : Best Model")
 
 
     st.write("""
@@ -75,4 +78,4 @@ def write():
 
     # TODO: insert image on general idea of the model
     st.image("website/assets/ReLUgraph.png")
-    st.write("Figure 5 : ReLUgraph")
+    st.write("Figure 6 : ReLUgraph")
