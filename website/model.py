@@ -76,7 +76,6 @@ def write():
              """)
 
     # TODO: insert image on general idea of the model
-    # TODO: insert image on general idea of the model
     st.write(
         """
         Across the apps, there is a differing number of re-views, and the 15th percentile is 28.  
