@@ -23,7 +23,7 @@ def write():
             After which, we have also performed cross-validation of different models to classify the sentiment polarity of each reviews.
 
             ### Cross Validation
-            For the models, we used the following models:
+            The following are the models that we used:
 
             1. Decision Tree
                 - often perform well on imbalanced datasets as their hierarchical structure allows them to learn signals from both classes.
