@@ -17,8 +17,8 @@ def write():
             1. TF-IDF
             2. Doc2Vec
                 - For Doc2Vec, there are distributed bag of words (DBOW) and distributed memory (DM).
-                - However, we chose ***DBOW*** as it is known to be able to perform better for a smaller corpus.
-              In DBOW, the paragraph vectors are obtained by training a neural network on the task of predicting a probability distribution of words in a paragraph given a randomly-sampled word from the paragraph.
+                - DBOW was selected.
+            In DBOW, the paragraph vectors are obtained by training a neural network on the task of predicting a probability distribution of words in a paragraph given a randomly-sampled word from the paragraph.
 
             After which, we have also performed cross-validation of different models to classify the sentiment of each review.
 
@@ -30,16 +30,16 @@ def write():
                 - our dataset is biased to positive sentiment
             """)
 
-    st.image("website/assets/DecisionTree.PNG",use_column_width=True)
+    st.image("website/assets/DecisionTree.PNG")
     st.write("Figure 1 : Decision Tree")
 
     st.write("""
 
             2. Support vector machine
-                - This is because we can penalize mistakes on the minority class by an amount proportional to how under-represented it is by using the argument class weight = ‘balanced’.
+                - This is because we can penalize mistakes on the minority class by an amount proportional to how under-represented it is.
              """)
 
-    st.image("website/assets/SVM.PNG",use_column_width=True)
+    st.image("website/assets/SVM.PNG")
     st.write("Figure 2 : SVM")
 
 
@@ -47,9 +47,9 @@ def write():
 
             To counter the imbalanced dataset, we also applied SMOTE (Synthetic Minority Over-sampling Technique).
             It is an over-sampling method which creates synthetic samples of the minority class.SMOTE uses a nearest neighbors algorithm to generate new and synthetic data we can use for training our model.
-            We use `imblearn` python package to achieve this.
+
             """)
-    #st.image("website/assets/sentiment_freq.png")
+    st.image("website/assets/sentiment_freq.png")
     st.write(""" Figure 3 : Sentiment Distribution""")
     st.write('**10-fold Cross Validation Table**')
     st.image("website/assets/Cross_Validation.PNG")
@@ -60,6 +60,7 @@ def write():
 
     st.write("""
             The measure of performance is micro-average F1-score as the dataset is unbalanced.
+
             The following is our best model on classification.
 
             **TF-IDF** + **Random Forest** + **OverSampling**
