@@ -82,7 +82,7 @@ def write():
         Thus for train-ing and testing our model, we only selected appsthat minimally have 28 reviews. 
         """
     )
-    st.image("website/assets/Predict_explaination.jpg")
+    st.image("website/assets/Predict_explaination.jpg",use_column_width = True)
     st.write(
         """
         During training, we randomly pick 28 reviews fromeach of these apps and use their sentiment values as nput for the model xi, 
