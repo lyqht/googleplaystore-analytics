@@ -30,9 +30,9 @@ def write():
                 - our dataset is biased to positive sentiment
             """)
 
-        st.image("website/assets/DecisionTree.PNG")
+    st.image("website/assets/DecisionTree.PNG")
 
-        st.write("""
+    st.write("""
 
             2. Support vector machine
                 - This is because we can penalize mistakes on the minority class by an amount proportional to how under-represented it is by using the argument class weight = ‘balanced’.
