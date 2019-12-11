@@ -50,10 +50,8 @@ def write():
             We use `imblearn` python package to achieve this.
             """)
     #st.image("website/assets/sentiment_freq.png")
-    st.write(""" Figure 3 : Sentiment Distribution
-
-            **10-fold Cross Validation Table**
-             """)
+    st.write(""" Figure 3 : Sentiment Distribution""")
+    st.write('**10-fold Cross Validation Table**')
     st.image("website/assets/Cross_Validation.PNG")
     st.write("Figure 4 : Cross Validation")
     st.write("""
