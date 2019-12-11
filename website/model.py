@@ -31,6 +31,7 @@ def write():
             """)
 
     st.image("website/assets/DecisionTree.PNG",use_column_width=True)
+    st.write("Figure 1 : Decision Tree")
 
     st.write("""
 
@@ -39,6 +40,7 @@ def write():
              """)
 
     st.image("website/assets/SVM.PNG",use_column_width=True)
+    st.write("Figure 2 : SVM")
 
 
     st.write("""
@@ -50,6 +52,7 @@ def write():
             **10-fold Cross Validation Table**
              """)
     st.image("website/assets/Cross_Validation.PNG")
+    st.write("Figure 3 : Cross_Validation")
     st.write("""
              Using TF-IDF generally results in higher F1 score.
              """)
@@ -58,10 +61,11 @@ def write():
             The measure of performance is micro-average F1-score as the dataset is unbalanced.
             The following is the our best model on classification.
 
-            TFIDF + Random Forest + OverSampling
+            **TFIDF** + **Random Forest** + **OverSampling**
 
              """)
     st.image("website/assets/Best_Model.PNG")
+    st.write("Figure 4 : Best_Model")
 
 
     st.write("""
@@ -71,3 +75,4 @@ def write():
 
     # TODO: insert image on general idea of the model
     st.image("website/assets/ReLUgraph.png")
+    st.write("Figure 5 : ReLUgraph")
