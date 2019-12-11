@@ -49,8 +49,8 @@ def write():
             It is an over-sampling method which creates synthetic samples of the minority class.SMOTE uses a nearest neighbors algorithm to generate new and synthetic data we can use for training our model.
 
             """)
-    st.image("website/assets/sentiment_freq.jpeg")
-    st.write(""" Figure 3 : Sentiment Distribution""")
+    #st.image("website/assets/sentiment_freq.jpeg")
+    #st.write(""" Figure 3 : Sentiment Distribution""")
     st.write('**10-fold Cross Validation Table**')
     st.image("website/assets/Cross_Validation.PNG")
     st.write("Figure 4 : Cross Validation")
