@@ -53,6 +53,17 @@ def write():
     st.write("""
              Using TF-IDF generally results in higher F1 score.
              """)
+
+    st.write("""
+            The measure of performance is micro-average F1-score as the dataset is unbalanced.
+            The following is the our best model on classification.
+
+            TFIDF + Random Forest + OverSampling
+
+             """)
+    st.image("website/assets/Best_Model.PNG")
+
+
     st.write("""
              ## Individual Star Rating Prediction Model
              After finalizing the classifier model for predicting the sentiment polarity, we designed a Neural Network with `Pytorch` as such.
