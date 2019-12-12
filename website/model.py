@@ -72,12 +72,12 @@ def write():
     # TODO: insert image on general idea of the model
     st.write(
         """
-        Across the apps, there is a differing number of re-views, and the 15th percentile is 28.
+        Across the apps, there is a differing number of reviews, and the 15th percentile is 28.
         Thus for train-ing and testing our model, we only selected apps that minimally have 28 reviews.
         """
     )
     st.write(
-        r"""
+        """
         Hence, we chose to randomly pick 28 reviews from each of these apps and use their sentiment values as the input for the model $x_i$,
         and the average rating for the corresponding apps as the labels $y_i$.
         """
