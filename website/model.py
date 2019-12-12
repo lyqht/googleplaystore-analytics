@@ -50,7 +50,7 @@ def write():
     #st.write(""" Figure 3 : Sentiment Distribution""")
     st.write('**10-fold Cross Validation Table**')
     st.image("website/assets/Best_Model.PNG")
-    st.write("Figure 4 : Cross Validation")
+    ##st.write("Figure 4 : Cross Validation")
     st.write("""
              Using TF-IDF generally results in higher F1 score.
              """)
@@ -63,7 +63,7 @@ def write():
             **TF-IDF** + **Random Forest** + **OverSampling**
 
              """)
-    st.image("website/assets/Best_Model.PNG")
+    st.image("website/assets/model.PNG")
     st.write("""
              ## Individual Star Rating Prediction Model
              After finalizing the classifier model for predicting the sentiment polarity, we designed a Neural Network with `Pytorch` as such.
