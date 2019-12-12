@@ -52,7 +52,7 @@ def write():
     #st.image("website/assets/sentiment_freq.jpeg")
     #st.write(""" Figure 3 : Sentiment Distribution""")
     st.write('**10-fold Cross Validation Table**')
-    st.image("website/assets/Cross_Validation.PNG")
+    st.image("website/assets/Best_Model.PNG")
     st.write("Figure 4 : Cross Validation")
     st.write("""
              Using TF-IDF generally results in higher F1 score.
@@ -66,7 +66,7 @@ def write():
             **TF-IDF** + **Random Forest** + **OverSampling**
 
              """)
-    st.image("website/assets/Best_Model.PNG")
+    st.image("website/assets/model.PNG")
     st.write("Figure 5 : Best Model")
 
 
@@ -78,14 +78,14 @@ def write():
     # TODO: insert image on general idea of the model
     st.write(
         """
-        Across the apps, there is a differing number of re-views, and the 15th percentile is 28.  
-        Thus for train-ing and testing our model, we only selected appsthat minimally have 28 reviews. 
+        Across the apps, there is a differing number of re-views, and the 15th percentile is 28.
+        Thus for train-ing and testing our model, we only selected appsthat minimally have 28 reviews.
         """
     )
     st.image("website/assets/Predict_explaination.jpg",use_column_width = True)
     st.write(
         """
-        During training, we randomly pick 28 reviews fromeach of these apps and use their sentiment values as nput for the model xi, 
+        During training, we randomly pick 28 reviews fromeach of these apps and use their sentiment values as nput for the model xi,
         and the average rating forthe corresponding apps as labels yi.
 
         Here is the trend curve for 100 epochs.
@@ -96,10 +96,10 @@ def write():
         """
         The model stabiliaed after 100 epoches as there is no major change after that.
 
-    
+
         """
     )
-    
+
     #Testing running model on the site#
 
 # # Model got weird error when run in my laptop (smth to do with anaconda)
@@ -237,4 +237,3 @@ def write():
 # plt.xlabel("Epoch")
 # plt.ylabel("Loss")
 # plt.plot(range(len(losses)), losses)
-
