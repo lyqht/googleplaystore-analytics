@@ -6,14 +6,15 @@ import streamlit as st
 
 
 def write():
-    st.title("Category and Star Rating Prediction from Google Playstore Reviews")
+    st.title("Google Playstore Analytics")
     st.write(
-        """Team members:
+        "Trends in App Store Data, App Reviews and Prediction of Individual Star Ratings")
+    st.write(
+        """
+        Team members:
         
-        Chua Wan Yun
-
-        Tey Siew Wen
-
-        Marooth Nath Chaowanastier
+        - Chua Wan Yun
+        - Tey Siew Wen
+        - Marooth Nath Chaowanastier
         """)
     st.image("website/assets/logo.png", use_column_width=True)

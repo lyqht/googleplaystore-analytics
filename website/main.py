@@ -10,7 +10,7 @@ PAGES = {
     "Intro": intro,
     "Dataset Exploration": dataset,
     "Topic Modelling": topic_modelling,
-    "Individual Star Rating Prediction Model": model,
+    "Star Rating Prediction Model": model,
     "References": references,
 }
 

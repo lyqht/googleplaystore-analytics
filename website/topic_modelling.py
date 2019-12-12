@@ -1,7 +1,19 @@
 import streamlit as st
+import pandas as pd
 
 
 def write():
+
+    st.write("""
+           Initially, we trained a BERT-base-uncased Named Entity Recognition (NER) model on a Kaggle dataset [Annotated Corpus for Named Entity Recognition](https://www.kaggle.com/abhinavwalia95/entity-annotated-corpus)
+            """)
+    st.image("website/assets/ner_dataset.png", use_column_width=True)
+    st.write(
+        "And this are our results from training and testing")
+    st.image("website/assets/bert_training_results.png", use_column_width=True)
+    st.write(
+        "However, it did not manage to perform well on the reviews from the Google Playstore Dataset... So the alternative is to do some topic modelling to derive more useful features instead.")
+
     st.write("""# Topic Modelling""")
     st.write("""
              Refer [here](website/assets/overall_100_topics_enhanced.html) for pyLDAvis visualization.
@@ -9,6 +21,7 @@ def write():
              """)
 
     st.write("#### Latent Dirichlet Algorithm (LDA)")
+    st.image("website/assets/LDA-concept.png", use_column_width=True)
     st.write(r"""
         To begin, LDA is based on the Dirichlet Distribution, normally known as $Dir(\alpha)$.
         Dirichlet distributions are commonly used as prior distributions in Bayesian statistics,
@@ -26,4 +39,3 @@ def write():
     - $z_{mn}$ is the topic for $n^{\text{th}}$  word in document $m$
     """)
     st.image("website/assets/LDA-concept2.png", use_column_width=True)
-    st.image("website/assets/LDA-concept.png", use_column_width=True)
