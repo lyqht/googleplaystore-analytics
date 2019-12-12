@@ -83,4 +83,4 @@ def write():
         """
     )
     st.image("website/assets/Predict_explaination.jpg", use_column_width=True)
-    st.image("website/assets/RELUgraph.png")
+    st.image("website/assets/ReLUgraph.png")
