@@ -27,6 +27,10 @@ def preview(selection, reviews_df, app_df):
 def preview_general(df):
     st.write("## General App Data")
     st.write(df)
+    fig = plt.figure(figsize=(10, 4))
+    sns.countplot(df['Type'], orient="h")
+    plt.title('Frequency of Free and Paid Apps')
+    st.pyplot()
 
     st.write("""
              ### Observation of Trends
@@ -40,8 +44,9 @@ def preview_general(df):
     plt.tight_layout()
     st.pyplot()
 
+    st.image("website/assets/category_rating_violin.jpg", use_column_width=True)
+
     fig = plt.figure(figsize=(10, 4))
-    # sns.countplot(df['Genres'])
     value_counts = df["Genres"].value_counts()
     genre_labels = list(value_counts.index)
 
@@ -67,30 +72,6 @@ def preview_general(df):
     st.pyplot()
 
     fig = plt.figure(figsize=(10, 4))
-    sns.countplot(df['Content Rating'])
-    plt.xlabel('Content Rating')
-    plt.ylabel('Frequency')
-    plt.title('Frequency Distribution of Content Ratings')
-    plt.tight_layout()
-    st.pyplot()
-
-    fig = plt.figure(figsize=(10, 4))
-    sns.countplot(df['Type'], orient="h")
-    plt.title('Frequency of Free and Paid Apps')
-    st.pyplot()
-
-    fig = plt.figure(figsize=(10, 4))
-    sns.countplot(df['Installs'])
-    plt.title('Frequency of Install Count')
-    plt.xticks(rotation=90)
-    st.pyplot()
-
-    fig = plt.figure(figsize=(10, 4))
-    sns.distplot(df['Size'].dropna())
-    plt.title('Frequency of App size')
-    st.pyplot()
-
-    fig = plt.figure(figsize=(10, 4))
     plt.xlabel('Rating')
     plt.ylabel('Frequency')
     sns.countplot(df['Rating'])
@@ -103,7 +84,10 @@ def preview_reviews(df):
         "## Reviews Data\n The preprocessing steps taken to produce the tokens can refered [here](https://github.com/lyqht/googleplaystore-analytics/blob/master/Notebooks/prelim_nlp_model.ipynb) ")
     st.write(df)
 
+    st.image("website/assets/1_word_count_reviews.jpg", use_column_width=True)
     st.write("Word Count Frequency")
+    st.image("website/assets/review_length_by_sentiment.jpg",
+             use_column_width=True)
     st.image("website/assets/freqDist.png", use_column_width=True)
 
 
