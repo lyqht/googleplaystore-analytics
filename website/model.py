@@ -83,10 +83,11 @@ def write():
         """
     )
     st.image("website/assets/Predict_explaination.jpg", use_column_width=True)
-    st.wrtie(
-        """
-        We trained our model for 100, 300 and 1000 epochs using the following parameter: $InputSize = 28$, $OutputSIZE = 1$, $HiddenSize = 30$ and $learning rate = 0.0002$.
+    st.write(
+        r"""
+        We trained our model for 100, 300 and 1000 epochs using the following parameters: 
+        
+        InputSize $= 28$, OutputSize $= 1$, HiddenSize $= 30$ and learning rate $= 0.0002$.
         """
     )
     st.image("website/assets/ReLUgraph.png")
-
