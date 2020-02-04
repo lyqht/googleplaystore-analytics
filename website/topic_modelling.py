@@ -16,7 +16,7 @@ def write():
 
     st.write("""# Topic Modelling""")
     st.write("""
-             Refer [here](website/assets/overall_100_topics_enhanced.html) for pyLDAvis visualization.
+             Download <a href="https://github.com/lyqht/googleplaystore-analytics/blob/master/website/assets/overall_100_topics_enhanced.html">this file</a> for pyLDAvis visualization.
              Topic modelling is based on the Latent Dirichlet Allocation Algorithm.
              """)
 
