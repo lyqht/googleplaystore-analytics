@@ -10,8 +10,8 @@ This repository stores the code for the project for our school course 50.038 Com
 # Jupyter Notebooks
 
 We carried out our analysis for the Google App Store Reviews and General App Data in Jupyter Notebooks. 
+Most of the notebooks are well-documented in what they do, you may refer to them for detailed explanation of what they do. The reason for many notebooks is that our group has chosen to work on various tasks *individually*.
 
-At the moment, 
 - Basic Cleaning for General App Data :`cleaning.ipynb`
 - General Visualization of General App Data: `visualization_project.Rmd`
 - Preprocessing and Model for Reviews Data using NLTK Naive Bayes Classifier to determine sentiment polarity: `prelim_nlp_model.ipynb` 
@@ -21,8 +21,6 @@ At the moment,
     - RandomForestClassifier
   - `FastText_Classification.ipynb`: FastTextClassification
   - `SVM.ipynb`: SVM 
-
-Most of the notebooks are well-documented in what they do, you may refer to them for detailed explanation of what they do. The reason for many notebooks is that our group has chosen to work on various tasks *individually*.
 
 # Streamlit App Setup instructions
 
