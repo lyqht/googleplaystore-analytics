@@ -36,8 +36,6 @@ To start the website locally,
 streamlit run website/main.py
 ```
 
-At the moment, it only shows a preview of the reviews' data. We are still planning what to actually show on this app for interaction.
-
 ## Deployment
 
 The Streamlit App is deployed to Heroku, and is redeployed everytime there is a new commit to the master branch.
