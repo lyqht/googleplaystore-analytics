@@ -2,6 +2,18 @@
 
 This repository stores the code for the project for our school course 50.038 Computational Data Science.
 
+[Presentation can be found here](https://docs.google.com/presentation/d/e/2PACX-1vSopfa2P6Pq1XkO0fVyysrAUlShHuYO1YM0bXarXPL4majGsw1EUvd0gxvwepYRxl89yiJfglcmTmdH/pub?start=false&loop=false&delayms=3000).
+
+## Screenshots
+
+Website preview
+
+![](website/assets/website_preview.png)
+
+Topic Modelling
+
+![](website/assets/topic_modelling.png)
+
 ## Datasets
 - [Google Playstore Data](https://www.kaggle.com/lava18/google-play-store-apps). 
   - There are 2 files, `googleplaystore.csv` and `googleplaystore_user_reviews.csv`.
